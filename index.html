@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello World!</title>
+	</head>
+	<body>
+		<video id="video" width="320" height="240" controls>
+			<source src="" type="video/mp4">
+		</video>
+		<input id="load-video" type="button" value="load video">
+		<div id="info" syle="width:320; height:240; background: #ff0"></div>
+	</body>
+
+	<script>
+		const remote = require("electron").remote;
+		const main = remote.require("./main.js");
+
+		main.openVideoServer();
+
+		document.getElementById("load-video").onclick = function() {
+			document.getElementById("video").src = "http://127.0.0.1:8765";
+		};
+	</script>
+</html>
