@@ -2,10 +2,12 @@ const http = require("http");
 const path = require("path");
 const spawn = require("child_process").spawn;
 
+const videoName = process.argv[2];
+
 var server = http.createServer(function(req, resp) {
     const proc = spawn('ffmpeg', [
-        '-y', 
-        '-i', 'bird.avi', 
+        '-re',
+        '-i', videoName, 
         '-c:v', 'libx264', 
         '-f', 'mp4', 
         '-movflags', 'frag_keyframe+empty_moov' , '-'
