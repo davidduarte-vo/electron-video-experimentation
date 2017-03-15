@@ -3,23 +3,28 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Hello World!</title>
+		<style>
+			html, body, div {
+				margin: 0px;
+				padding: 0px;
+			}
+			body {
+				width: 100%;
+				height: 100%;
+			}
+			video {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
 	</head>
 	<body>
-		<video id="video" width="320" height="240" controls>
+		<video id="video" controls autoplay>
 			<source src="" type="video/mp4">
 		</video>
-		<input id="load-video" type="button" value="load video">
-		<div id="info" syle="width:320; height:240; background: #ff0"></div>
 	</body>
 
 	<script>
-		const remote = require("electron").remote;
-		const main = remote.require("./main.js");
-
-		main.openVideoServer();
-
-		document.getElementById("load-video").onclick = function() {
-			document.getElementById("video").src = "http://127.0.0.1:8765";
-		};
+		require("./index.js");
 	</script>
 </html>
