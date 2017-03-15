@@ -41,15 +41,7 @@ app.on('activate', function () {
 
 // This is my custom video server
 exports.openVideoServer = function(videoPath) {
-	execFile("ffmpeg", [
-        "-y",
-        "-i", videoPath, 
-        "-c:v", "libx264", 
-		"-movflags", "faststart",
-        "-f", "mp4", 
-        "output.mp4"
-    ]);
-	execFile("node", ["video_server.js", "output.mp4"], function(error, stdout, stderr) {
+	execFile("node", ["video_server.js", videoPath], function(error, stdout, stderr) {
 		console.log("openVideoServer error", error);
 		console.log("openVideoServer stderr", stderr);
 		console.log("openVideoServer stdout", stdout);
